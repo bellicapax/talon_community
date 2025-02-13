@@ -14,8 +14,9 @@ gamepad(dpad_right):        edit.right()
 
 gamepad(west:down):         mouse_drag()
 gamepad(west:up):           mouse_release()
-gamepad(north:down):        mouse_click(2)
-gamepad(east):              user.mouse_control_click()
+gamepad(north:down):        mouse_drag(2)
+gamepad(north:up):        mouse_release(2)
+gamepad(east):              key(enter)
 gamepad(south:down):        mouse_drag(1)
 gamepad(south:up):          mouse_release(1)
 
@@ -32,8 +33,9 @@ gamepad(l2:change):         user.gamepad_scroll(0, value*-1)
 gamepad(r2:change):         user.gamepad_scroll(0, value)
 
 gamepad(left_xy:repeat):    user.gamepad_mouse_move(x, y*-1)
+# gamepad(left_xy):    user.gamepad_mouse_move(x, y*-1)   # This catches the 0 event
 
 gamepad(right_xy):          user.gamepad_scroll(x, y*-1)
-gamepad(r3):                user.gamepad_scroll_slow_toggle()
+# gamepad(r3):                user.gamepad_scroll_slow_toggle()
 
 ^joystick$: user.gamepad_sleep_toggle()

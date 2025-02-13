@@ -16,52 +16,56 @@ is_gamepad_asleep = True
 slow_scroll = False
 slow_mouse_move = True
 mouse_freeze_time = 0
+scroll_active_time = 0.0
+mouse_active = False
+mouse_active_time = 0.0
 _x = 0
 _y = 0
 
 
 @mod.action_class
 class Actions:
+
     def gamepad_sleep_toggle():
         """Toggles the gamepad between its own wake and sleep modes"""
         global is_gamepad_asleep
         is_gamepad_asleep = not is_gamepad_asleep
-        if is_gamepad_asleep:
-            ctx.tags = ["user.gamepad_sleep"]
-            actions.user.hud_add_log('event', 'zzzzzzz')
-        else:
-            ctx.tags = []
-            actions.user.hud_add_log('success', 'game on girly!')
+        set_tags_for_sleep()
+
 
     def gamepad_sleep_set(enable: bool):
         """Sets the gamepad between its own wake and sleep modes"""
+        global is_gamepad_asleep
         is_gamepad_asleep = enable
-        if is_gamepad_asleep:
-            ctx.tags = ["user.gamepad_sleep"]
-            actions.user.hud_add_log('event', 'zzzzzzz')
-        else:
-            ctx.tags = []
-            actions.user.hud_add_log('success', 'game on girly!')
+        set_tags_for_sleep()
 
     def gamepad_scroll(x: float, y: float):
         """Perform gamepad scrolling"""
-        global cron_job, _x, _y
-        multiplier = 1.5 if slow_scroll else 3
+        global cron_job, _x, _y, scroll_active_time
+        multiplier = 0.5 if slow_scroll else 3
         _x = x**3 * multiplier
         _y = y**3 * multiplier
+        # actions.user.hud_add_log('event', 'Scroll {}, {}'.format(x, y))
 
         if _x != 0 or _y != 0:
             if cron_job is None:
+                scroll_active_time = time.time()
                 cron_job = cron.interval("16ms", scroll_continuous_helper)
+                # if mouse_active:
+                #     gamepad_mouse_move(x, y)
+                # else:
+                #     cron_job = cron.interval("16ms", scroll_continuous_helper)
         elif cron_job is not None:
             cron.cancel(cron_job)
             cron_job = None
+            scroll_active_time = 0.0
 
     def gamepad_mouse_move(dx: float, dy: float):
         """Perform gamepad mouse cursor movement"""
         multiplier = 0.05 if slow_mouse_move else 0.3
         x, y = ctrl.mouse_pos()
         screen = get_screen(x, y)
+        # actions.user.hud_add_log('event', 'Scroll {x:.2f}, {y:.2f}'.format(x=dx, y=dy))
         dx = dx**3 * screen.dpi * multiplier
         dy = dy**3 * screen.dpi * multiplier
         ctrl.mouse_move(x + dx, y + dy)
@@ -115,6 +119,28 @@ class Actions:
         #         x += rect.width / 4
 
         ctrl.mouse_move(x, y)
+    
+    def gamepad_listen_for_mouse_stop(dx: float, dy: float):
+        """Listens for mouse start/stop to turn mouse active/inactive"""
+        global mouse_active, mouse_active_time
+        if mouse_active:
+            if dx == 0 and dy == 0:
+                mouse_active = False
+                mouse_active_time = 0.0
+        else:
+            if dx != 0 or dy != 0:
+                mouse_active = True
+                mouse_active_time = time.time()
+
+
+
+def set_tags_for_sleep():
+    if is_gamepad_asleep:
+        ctx.tags = ["user.gamepad_sleep"]
+        actions.user.hud_add_log('event', 'zzzzzzz')
+    else:
+        ctx.tags = []
+        actions.user.hud_add_log('success', 'game on girly!')
 
 
 def scroll_continuous_helper():
