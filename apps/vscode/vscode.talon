@@ -32,12 +32,12 @@ bar switch: user.vscode("workbench.action.toggleSidebarVisibility")
 symbol hunt [<user.text>]:
     user.vscode("workbench.action.gotoSymbol")
     sleep(50ms)
-    insert(text or "")
+    user.insert_formatted(text or "", "PUBLIC_CAMEL_CASE")
 
 symbol hunt all [<user.text>]:
     user.vscode("workbench.action.showAllSymbols")
     sleep(50ms)
-    insert(text or "")
+    user.insert_formatted(text or "", "PUBLIC_CAMEL_CASE")
 
 # Panels
 panel control: user.vscode("workbench.panel.repl.view.focus")
@@ -73,7 +73,7 @@ zen switch: user.vscode("workbench.action.toggleZenMode")
 file hunt [<user.text>]:
     user.vscode("workbench.action.quickOpen")
     sleep(50ms)
-    insert(text or "")
+    user.insert_formatted(text or "", "PUBLIC_CAMEL_CASE")
 file hunt (pace | paste):
     user.vscode("workbench.action.quickOpen")
     sleep(50ms)
