@@ -163,3 +163,21 @@ scope: "::"
 ^private$: 
     edit.delete_line()
     insert("private:")
+
+(val oak) <user.prose>$:
+    insert(".")
+    user.insert_formatted(prose, "PUBLIC_CAMEL_CASE")
+    insert("()")
+    edit.left()
+(val prop) <user.prose>$:
+    insert(".")
+    user.insert_formatted(prose, "PUBLIC_CAMEL_CASE")
+(point oak) <user.prose>$:
+    insert("->")
+    user.insert_formatted(prose, "PUBLIC_CAMEL_CASE")
+    insert("()")
+    edit.left()
+(point prop) <user.prose>$:
+    insert("->")
+    user.insert_formatted(prose, "PUBLIC_CAMEL_CASE")
+^todo$: "// TODO: "
