@@ -1,7 +1,7 @@
 tag: user.code_comment_line
 -
-comment: user.code_comment_line_prefix()
-comment line:
+# comment: user.code_comment_line_prefix()
+^comment line$:
     #todo: this should probably be a single function once
     #.talon supports implementing actions with parameters?
     edit.line_start()
@@ -19,11 +19,11 @@ comment <user.text> over:
     #.talon supports implementing actions with parameters?
     user.code_comment_line_prefix()
     insert(user.text)
-comment <user.text>$:
-    #todo: this should probably be a single function once
-    #.talon supports implementing actions with parameters?
-    user.code_comment_line_prefix()
-    insert(user.text)
+# comment <user.text>$:
+#     #todo: this should probably be a single function once
+#     #.talon supports implementing actions with parameters?
+#     user.code_comment_line_prefix()
+#     insert(user.text)
 (line | inline) comment <user.text> over:
     #todo: this should probably be a single function once
     #.talon supports implementing actions with parameters?
