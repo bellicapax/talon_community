@@ -1,0 +1,15 @@
+name: struct
+description: Struct
+phrase: struct
+insertionScope: line | class
+---
+
+language: cpp | c
+
+$name.insertionFormatter: PUBLIC_CAMEL_CASE
+-
+struct F$name
+{
+    $body
+};
+---

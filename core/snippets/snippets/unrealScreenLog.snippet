@@ -1,0 +1,10 @@
+name: unrealScreenLog
+description: Unreal Onscreen Log
+phrase: screen log
+insertionScope: class | namedFunction
+---
+
+language: cpp | c
+-
+GEngine->AddOnScreenDebugMessage(INDEX_NONE, 0.0f, FColor::$color, FString::Printf(TEXT("$text")));
+---

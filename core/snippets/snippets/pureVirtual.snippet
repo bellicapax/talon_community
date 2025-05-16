@@ -1,0 +1,10 @@
+name: pureVirtual
+description: Unreal PURE_VIRTUAL
+phrase: pure virtual
+insertionScope: class
+---
+
+language: cpp | c
+-
+PURE_VIRTUAL($class::$function(), return $returnValue;);
+---

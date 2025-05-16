@@ -1,0 +1,10 @@
+name: cVar
+description: Unreal Console Variable
+phrase: si var
+insertionScope: line | statement
+---
+
+language: cpp | c
+-
+static TAutoConsoleVariable<$type> CVar$name(TEXT("$name"), $value, TEXT("$description"));
+---

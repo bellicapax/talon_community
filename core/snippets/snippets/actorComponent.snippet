@@ -1,0 +1,25 @@
+name: actorComponent
+description: Unreal Actor Component
+phrase: actor component
+insertionScope: line | statement
+---
+
+language: cpp | c
+
+$name.insertionFormatter: PUBLIC_CAMEL_CASE
+-
+#pragma once
+
+#include <Components/ActorComponent.h>
+
+#include "$name.generated.h"
+
+UCLASS(Blueprintable)
+class U$name : public UActorComponent
+{
+    GENERATED_BODY()
+
+public:
+
+};
+---

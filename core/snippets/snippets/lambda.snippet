@@ -1,0 +1,15 @@
+name: lambda
+description: range based for loop
+phrase: lambda
+insertionScope: class | namedFunction
+
+$body.wrapperScope: statement
+---
+
+language: cpp | c
+-
+[$captures]($variables)
+{
+    $body
+}
+---

@@ -1,0 +1,17 @@
+name: uObjectOnly
+description: Unreal UObject (without includes)
+phrase: you object only
+insertionScope: line | statement
+---
+
+language: cpp | c
+
+$name.insertionFormatter: PUBLIC_CAMEL_CASE
+-
+UCLASS()
+class U$name : public UObject
+{
+    GENERATED_BODY()
+
+};
+---

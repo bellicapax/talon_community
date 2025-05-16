@@ -1,0 +1,23 @@
+name: uObject
+description: Unreal UObject
+phrase: you object
+insertionScope: line | statement
+---
+
+language: cpp | c
+
+$name.insertionFormatter: PUBLIC_CAMEL_CASE
+-
+#pragma once
+
+#include <CoreMinimal.h>
+
+#include "$name.generated.h"
+
+UCLASS()
+class U$name : public UObject
+{
+    GENERATED_BODY()
+
+};
+---

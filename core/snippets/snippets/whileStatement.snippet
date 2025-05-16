@@ -1,0 +1,16 @@
+name: whileStatement
+description: While statement
+phrase: while
+insertionScope: statement
+
+$condition.wrapperScope: statement
+$execution.wrapperPhrase: while
+---
+
+language: cpp | c
+-
+while ($condition)
+{
+    $execution
+}
+---

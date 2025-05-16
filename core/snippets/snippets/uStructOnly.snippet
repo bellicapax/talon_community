@@ -1,0 +1,17 @@
+name: ustructOnly
+description: Unreal UStruct (without pragma or include)
+phrase: you struct only
+insertionScope: line | statement
+---
+
+language: cpp | c
+
+$name.insertionFormatter: PUBLIC_CAMEL_CASE
+-
+USTRUCT(BlueprintType)
+struct F$name
+{
+    GENERATED_BODY()
+
+};
+---

@@ -1,0 +1,32 @@
+name: wfTargetQueryFilter
+description: Wildflower Target Query Filter
+phrase: target query filter
+insertionScope: line | statement
+---
+
+language: cpp | c
+
+$name.insertionFormatter: PUBLIC_CAMEL_CASE
+-
+#pragma once
+
+#include <CoreMinimal.h>
+#include "Lamplight/AI/TargetQuery/TargetQueryPass.h"
+
+#include "TargetQueryPass_$filterType.generated.h"
+
+UCLASS(CollapseCategories, meta = (DisplayName = "$displayName"))
+class UTargetQueryPass_Filter_$filterType : public UTargetQueryPass_Filter
+{
+    GENERATED_BODY()
+
+public:
+    virtual void Startup(UTargetQueryInstance& Inst) const final;
+    virtual void Shutdown(UTargetQueryInstance& Inst) const final;
+    virtual ETargetQueryResult Evaluate(UTargetQueryInstance& Inst) const final;
+    virtual void OnAddTarget(UTargetQueryInstance& Inst, int32 TargetIdx) const final;
+    virtual void OnRemoveTarget(UTargetQueryInstance& Inst, int32 TargetIdx) const final;
+
+private:
+};
+---

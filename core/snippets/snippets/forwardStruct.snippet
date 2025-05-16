@@ -1,0 +1,13 @@
+name: forwardStruct
+description: Forward declare a struct
+phrase: forward struct
+insertionScope: class
+
+$varType.wrapperPhrase: forward struct
+$varType.wrapperScope: token
+---
+
+language: cpp | c
+-
+struct $varType;
+---

@@ -1,0 +1,14 @@
+name: ifWithEditor
+description: Preprocessor define wrap for code that should only be executed when Editor is present
+phrase: with editor
+
+$ourCode.wrapperPhrase: with editor
+$ourCode.wrapperScope: line
+---
+
+language: cpp | c
+-
+#if WITH_EDITOR
+$ourCode
+#endif // #if WITH_EDITOR
+---

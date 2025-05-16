@@ -1,0 +1,13 @@
+name: actorProperty
+description: Unreal Actor UPROPERTY
+phrase: actor property
+insertionScope: class | namedFunction
+
+$varName.wrapperScope: token
+---
+
+language: cpp | c
+-
+UPROPERTY($specifiers)
+TObjectPtr<AActor> $varName;
+---

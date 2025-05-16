@@ -1,0 +1,13 @@
+name: unrealText
+description: Unreal Text Macro
+phrase: text
+insertionScope: class | namedFunction
+
+$statement.wrapperPhrase: text
+$statement.wrapperScope: statement
+---
+
+language: cpp | c
+-
+TEXT("$statement")
+---

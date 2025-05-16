@@ -1,0 +1,28 @@
+name: sceneComponent
+description: Unreal Scene Component
+phrase: seen component
+insertionScope: line | statement
+---
+
+language: cpp | c
+
+$name.insertionFormatter: PUBLIC_CAMEL_CASE
+-
+#pragma once
+
+// UCLASS Common: Blueprintable BlueprintType Abstract Within
+// meta Common: BlueprintSpawnableComponent
+// HideCategories = (Sockets, Tags, Activation, Cooking, AssetUserData, Collision, ComponentTick, ComponentReplication, Rendering, Physics, LOD)
+#include <Components/SceneComponent.h>
+
+#include "$name.generated.h"
+
+UCLASS()
+class U$name : public USceneComponent
+{
+    GENERATED_BODY()
+
+public:
+
+};
+---

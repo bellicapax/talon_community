@@ -1,0 +1,16 @@
+name: reverseForLoop
+description: reverse for loop
+phrase: reverse for loop
+insertionScope: namedFunction
+
+$body.wrapperPhrase: reverse for loop
+$body.wrapperScope: statement
+---
+
+language: cpp | c
+-
+for (int32 i = $count; i > -1; i--)
+{
+    $body
+}
+---

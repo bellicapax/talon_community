@@ -1,0 +1,12 @@
+name: imguiTextParams
+description: IMGUI Text Function (With Params)
+phrase: gooey text params
+insertionScope: class | namedFunction
+
+$statement.wrapperScope: statement
+---
+
+language: cpp | c
+-
+ImGui::Text("$statement %$type", $expression);
+---

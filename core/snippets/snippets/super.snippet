@@ -1,0 +1,12 @@
+name: super
+description: Call to Super Implementation
+phrase: super
+insertionScope: class | namedFunction
+---
+
+language: cpp | c
+
+$name.insertionFormatter: PUBLIC_CAMEL_CASE
+-
+Super::$name($statement);
+---

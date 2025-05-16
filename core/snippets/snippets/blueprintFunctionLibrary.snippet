@@ -1,0 +1,25 @@
+name: blueprintFunctionLibrary
+description: Unreal Blueprint Function Library
+phrase: blueprint library
+insertionScope: line | statement
+---
+
+language: cpp | c
+
+$name.insertionFormatter: PUBLIC_CAMEL_CASE
+-
+#pragma once
+
+#include <Kismet/BlueprintFunctionLibrary.h>
+
+#include "$name.generated.h"
+
+UCLASS()
+class U$name : public UBlueprintFunctionLibrary
+{
+    GENERATED_BODY()
+
+public:
+
+};
+---

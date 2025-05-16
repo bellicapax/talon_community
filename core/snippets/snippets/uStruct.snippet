@@ -1,0 +1,21 @@
+name: ustruct
+description: Unreal UStruct
+phrase: you struct
+insertionScope: line | statement
+---
+
+language: cpp | c
+
+$name.insertionFormatter: PUBLIC_CAMEL_CASE
+-
+#pragma once
+
+#include "$name.generated.h"
+
+USTRUCT(BlueprintType)
+struct F$name
+{
+    GENERATED_BODY()
+
+};
+---

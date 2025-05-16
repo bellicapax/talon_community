@@ -1,0 +1,13 @@
+name: onScopeExit
+description: Unreal On Scope Exit Macro
+phrase: scope exit
+insertionScope: class | namedFunction
+
+$statement.wrapperPhrase: scope exit
+$statement.wrapperScope: token
+---
+
+language: cpp | c
+-
+ON_SCOPE_EXIT{ $statement };
+---

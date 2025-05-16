@@ -1,0 +1,16 @@
+list: user.system_paths
+hostname: GREYBY_BABY
+-
+user: C:\Users\erisk
+profile: C:\Users\erisk
+desktop: C:\Users\erisk\OneDrive\Desktop
+desk: C:\Users\erisk\Desktop
+documents: C:\Users\erisk\OneDrive\Documents
+docks: C:\Users\erisk\Documents
+downloads: C:\Users\erisk\Downloads
+music: C:\Users\erisk\Music
+pictures: C:\Users\erisk\OneDrive\Pictures
+videos: C:\Users\erisk\Videos
+talon home: C:\Users\erisk\AppData\Roaming\talon
+talon user: C:\Users\erisk\AppData\Roaming\talon\user
+one drive: C:\Users\erisk\OneDrive

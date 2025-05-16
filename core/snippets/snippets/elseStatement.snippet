@@ -6,9 +6,17 @@ $0.wrapperPhrase: else
 $0.wrapperScope: statement
 ---
 
-language: c | cpp | csharp | java | javascript | typescript | javascriptreact | typescriptreact
+language: csharp | java | javascript | typescript | javascriptreact | typescriptreact
 -
 else {
+    $0
+}
+---
+
+language: c | cpp
+-
+else 
+{
     $0
 }
 ---

@@ -1,0 +1,17 @@
+name: namespace
+description: Namespace Block
+phrase: namespace
+insertionScope: document
+
+$code.wrapperPhrase: namespace
+---
+
+language: cpp | c
+
+$name.insertionFormatter: NOOP
+-
+namespace $name
+{
+    $code
+}
+---

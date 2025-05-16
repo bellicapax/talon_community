@@ -1,0 +1,13 @@
+name: softClassPointer
+description: Unreal TSoftClassPtr
+phrase: soft class pointer
+insertionScope: class | namedFunction
+
+$varType.wrapperPhrase: soft class pointer
+$varType.wrapperScope: token
+---
+
+language: cpp | c
+-
+TSoftClassPtr<$varType>
+---

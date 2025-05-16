@@ -1,0 +1,13 @@
+name: constCast
+description: C++ Const Cast
+phrase: const cast
+insertionScope: namedFunction
+
+$var.wrapperPhrase: const cast
+$varType.wrapperScope: token
+---
+
+language: cpp | c
+-
+const_cast<$varType>($var)
+---

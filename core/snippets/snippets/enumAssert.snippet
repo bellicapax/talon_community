@@ -1,0 +1,13 @@
+name: assertEnum
+description: Assert Enumeration
+phrase: assert enumeration 
+insertionScope: class | namedFunction
+
+$enum.wrapperPhrase: assert
+$enum.wrapperScope: token
+---
+
+language: cpp | c
+-
+ASSERT_ENUM($enum, $number);
+---

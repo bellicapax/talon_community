@@ -1,0 +1,23 @@
+name: dataAsset
+description: Unreal UDataAsset
+phrase: data asset
+insertionScope: line | statement
+---
+
+language: cpp | c
+
+$name.insertionFormatter: PUBLIC_CAMEL_CASE
+-
+#pragma once
+
+#include <Engine/DataAsset.h>
+
+#include "$name.generated.h"
+
+UCLASS()
+class U$name : public UDataAsset
+{
+    GENERATED_BODY()
+
+};
+---

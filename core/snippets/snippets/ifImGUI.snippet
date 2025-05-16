@@ -1,0 +1,13 @@
+name: ifImGUI
+description: Preprocessor define wrap for code that should only be executed when ImGUI is present
+
+$ourCode.wrapperPhrase: gooey
+$ourCode.wrapperScope: line
+---
+
+language: cpp | c | csharp
+-
+#if WITH_IMGUI
+$ourCode
+#endif // #if WITH_IMGUI
+---

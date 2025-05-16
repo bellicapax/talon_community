@@ -1,0 +1,17 @@
+name: imguiTreeNode
+description: IMGUI Tree Node
+phrase: gooey tree
+insertionScope: statement
+
+$consequence.wrapperPhrase: gooey tree
+$consequence.wrapperScope: statement
+---
+
+language: cpp | c
+-
+if (ImGui::TreeNodeEx("$title", ImGuiTreeNodeFlags_SpanAvailWidth))
+{
+    ON_SCOPE_EXIT{ ImGui::TreePop(); };
+    $consequence
+}
+---

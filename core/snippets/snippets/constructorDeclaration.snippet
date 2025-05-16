@@ -3,7 +3,7 @@ phrase: constructor
 insertionScope: namedFunction | statement
 ---
 
-language: cpp | csharp | java
+language: csharp | java
 -
 $1($2) {
     $0
@@ -16,9 +16,21 @@ constructor($1) {
     $0
 }
 ---
-
 language: python
 -
 def __init__(self$1):
     $0
+---
+language: cpp | c
+-
+$1($2);
+---
+name: constructorDefinition
+phrase: constructor define
+language: cpp | c
+-
+$className::$className($params)
+{
+    $body
+}
 ---

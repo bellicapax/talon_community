@@ -1,0 +1,12 @@
+name: operatorEquality
+description: CPP equality operator override
+phrase: operator equality
+insertionScope: class
+
+$varType.wrapperScope: token
+---
+
+language: cpp | c
+-
+bool operator==(const $varType& Other) const;
+---

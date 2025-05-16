@@ -1,0 +1,16 @@
+name: forRangeMap
+description: range based for loop for looping over maps
+phrase: for each map
+insertionScope: class | namedFunction
+
+$body.wrapperPhrase: for each map
+$body.wrapperScope: statement
+---
+
+language: cpp | c
+-
+for (TPair<$key, $value>& Pair : $map)
+{
+    $body
+}
+---

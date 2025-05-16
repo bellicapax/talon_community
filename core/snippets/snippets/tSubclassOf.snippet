@@ -1,0 +1,13 @@
+name: subclassOf
+description: Unreal TSubclassOf
+phrase: subclass of
+insertionScope: class | namedFunction
+
+$varType.wrapperPhrase: subclass of
+$varType.wrapperScope: token
+---
+
+language: cpp | c
+-
+TSubclassOf<$varType>
+---

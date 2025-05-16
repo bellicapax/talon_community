@@ -8,9 +8,17 @@ $0.wrapperPhrase: elif
 $0.wrapperScope: statement
 ---
 
-language: c | cpp | csharp | java | javascript | typescript | javascriptreact | typescriptreact
+language: csharp | java | javascript | typescript | javascriptreact | typescriptreact
 -
 else if ($1) {
+    $0
+}
+---
+
+language: c | cpp
+-
+else if ($1) 
+{
     $0
 }
 ---

@@ -1,0 +1,16 @@
+name: forRange
+description: range based for loop
+phrase: for each
+insertionScope: class | namedFunction
+
+$body.wrapperPhrase: for each
+$body.wrapperScope: statement
+---
+
+language: cpp | c
+-
+for ($item $name : $iterator)
+{
+    $body
+}
+---

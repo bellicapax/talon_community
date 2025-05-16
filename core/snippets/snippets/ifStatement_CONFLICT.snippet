@@ -1,0 +1,17 @@
+name: ifStatement
+description: If statement
+phrase: if
+insertionScope: statement
+
+$condition.wrapperPhrase: condition
+$condition.wrapperScope: statement
+$consequence.wrapperPhrase: if
+---
+
+language: cpp | c
+-
+if ($condition)
+{
+    $consequence
+}
+---

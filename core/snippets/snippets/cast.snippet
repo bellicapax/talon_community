@@ -1,0 +1,13 @@
+name: cast
+description: Unreal Cast
+phrase: cast
+insertionScope: namedFunction
+
+$var.wrapperPhrase: cast
+$varType.wrapperScope: token
+---
+
+language: cpp | c
+-
+Cast<$varType>($var)
+---

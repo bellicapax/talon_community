@@ -1,0 +1,14 @@
+name: ifNotShipping
+description: Preprocessor define wrap for code that should only be executed if not in a shipping build
+phrase: not shipping
+
+$ourCode.wrapperPhrase: not shipping
+$ourCode.wrapperScope: line
+---
+
+language: cpp | c
+-
+#if !UE_BUILD_SHIPPING
+$ourCode
+#endif // #if !UE_BUILD_SHIPPING
+---

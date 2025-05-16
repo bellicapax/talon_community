@@ -1,0 +1,12 @@
+name: getTypeHash
+description: CPP GetTypeHash()
+phrase: get type hash
+insertionScope: class
+
+$varType.wrapperScope: token
+---
+
+language: cpp | c
+-
+friend uint32 GetTypeHash(const $varType& $varName);
+---

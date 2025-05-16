@@ -1,0 +1,13 @@
+name: staticCast
+description: C++ Static Cast
+phrase: static cast
+insertionScope: namedFunction
+
+$var.wrapperPhrase: static cast
+$varType.wrapperScope: token
+---
+
+language: cpp | c
+-
+static_cast<$varType>($var)
+---

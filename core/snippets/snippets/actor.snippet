@@ -1,0 +1,25 @@
+name: actor
+description: Unreal Actor
+phrase: actor
+insertionScope: line | statement
+---
+
+language: cpp | c
+
+$name.insertionFormatter: PUBLIC_CAMEL_CASE
+-
+#pragma once
+
+#include <GameFramework/Actor.h>
+
+#include "$name.generated.h"
+
+UCLASS(Blueprintable)
+class A$name : public AActor
+{
+    GENERATED_BODY()
+
+public:
+
+};
+---

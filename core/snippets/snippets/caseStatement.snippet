@@ -2,11 +2,21 @@ name: caseStatement
 phrase: case
 ---
 
-language: c | cpp | csharp | java | javascript | typescript | javascriptreact | typescriptreact
+language: csharp | java | javascript | typescript | javascriptreact | typescriptreact
 insertionScope: branch
 -
 case $1:
     $0
+---
+
+language: c | cpp
+insertionScope: branch
+-
+case $enumType
+{
+    $consequence
+    break;
+}
 ---
 
 language: python

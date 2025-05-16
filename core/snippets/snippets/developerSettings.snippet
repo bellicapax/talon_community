@@ -1,0 +1,25 @@
+name: developerSettings
+description: Unreal Developer Settings
+phrase: developer settings
+insertionScope: line | statement
+---
+
+language: cpp | c
+
+$name.insertionFormatter: PUBLIC_CAMEL_CASE
+-
+#pragma once
+
+#include <Engine/DeveloperSettings.h>
+
+#include "$name.generated.h"
+
+UCLASS(config = $configName)
+class U$name : public UDeveloperSettings
+{
+    GENERATED_BODY()
+
+    public:
+
+};
+---

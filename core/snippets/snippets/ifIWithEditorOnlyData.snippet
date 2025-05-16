@@ -1,0 +1,14 @@
+name: ifWithEditorOnlyData
+description: Preprocessor define wrap for code that should only be included for contexts that need to reference editor only data
+phrase: with editor data
+
+$ourCode.wrapperPhrase: with editor data
+$ourCode.wrapperScope: line
+---
+
+language: cpp | c
+-
+#if WITH_EDITORONLY_DATA
+$ourCode
+#endif // #if WITH_EDITORONLY_DATA
+---

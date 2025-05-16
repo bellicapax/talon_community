@@ -3,11 +3,25 @@ phrase: switch
 insertionScope: statement
 ---
 
-language: c | cpp | csharp | java | javascript | typescript | javascriptreact | typescriptreact
+language: csharp | java | javascript | typescript | javascriptreact | typescriptreact
 -
 switch ($1) {
     $0
 }
+---
+
+language: c | cpp
+-
+switch ($enumInstance)
+{
+    case $enumType
+    {
+        $consequence
+        break;
+    }
+    ENUM_DEFAULT($enumInstance);
+}
+ASSERT_ENUM($enumType, $num);
 ---
 
 language: python

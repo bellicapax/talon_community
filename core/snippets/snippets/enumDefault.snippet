@@ -1,0 +1,13 @@
+name: enumDefault
+description: Enumeration Default Handler
+phrase: enumeration default
+insertionScope: class | namedFunction
+
+$variable.wrapperPhrase: enumeration default
+$variable.wrapperScope: token
+---
+
+language: cpp | c
+-
+ENUM_DEFAULT($variable);
+---

@@ -1,0 +1,13 @@
+name: uniquePointer
+description: Unreal TUniquePtr
+phrase: unique pointer
+insertionScope: class | namedFunction
+
+$varType.wrapperPhrase: unique pointer
+$varType.wrapperScope: token
+---
+
+language: cpp | c
+-
+TUniquePtr<$varType>
+---

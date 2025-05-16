@@ -1,0 +1,19 @@
+name: blueprintFunctionLibraryOnly
+description: Unreal Blueprint Function Library (without includes)
+phrase: blueprint library only
+insertionScope: line | statement
+---
+
+language: cpp | c
+
+$name.insertionFormatter: PUBLIC_CAMEL_CASE
+-
+UCLASS()
+class U$name : public UBlueprintFunctionLibrary
+{
+    GENERATED_BODY()
+
+public:
+
+};
+---

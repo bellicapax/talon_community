@@ -1,0 +1,15 @@
+name: equalityOperator
+description: Class Equality Operator Overload
+phrase: equal operator
+insertionScope: class
+
+$varType.wrapperScope: token
+---
+
+language: cpp | c
+-
+bool operator==(const $varType& Other) const
+{
+    $body
+}
+---

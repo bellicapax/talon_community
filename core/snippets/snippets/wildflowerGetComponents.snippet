@@ -1,0 +1,11 @@
+name: wildflowerGetComponents
+description: Wildflower Get Components
+phrase: wild get components
+insertionScope: namedFunction
+---
+
+language: cpp | c
+-
+TArray<$component*> $varName;
+UWFComponentUtil::GetComponentsOfType<$component>(World, &$varName);
+---

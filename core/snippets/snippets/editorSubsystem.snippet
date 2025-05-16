@@ -1,0 +1,31 @@
+name: editorSubsystem
+description: Unreal Editor Subsystem
+phrase: editor subsystem
+insertionScope: line | statement
+---
+
+language: cpp | c
+
+$name.insertionFormatter: PUBLIC_CAMEL_CASE
+-
+#pragma once
+
+#include <CoreMinimal.h>
+#include <EditorSubsystem.h>
+
+#include "$name.generated.h"
+
+UCLASS(MinimalAPI)
+class U$name : public UEditorSubsystem
+{
+    GENERATED_BODY()
+public:
+    // Singleton access
+    static U$name* Get();
+
+    // UEditorSubsystem API
+    virtual bool ShouldCreateSubsystem(UObject* Outer) const { return true; }
+    virtual void Initialize(FSubsystemCollectionBase& Collection) override;
+    virtual void Deinitialize() override;
+};
+---
