@@ -14,12 +14,12 @@ tag(): user.code_data_null
 tag(): user.code_functions
 tag(): user.code_functions_common
 tag(): user.code_libraries
-tag(): user.code_libraries_gui
 
 tag(): user.code_operators_array
 tag(): user.code_operators_assignment
 tag(): user.code_operators_bitwise
 tag(): user.code_operators_math
+tag(): user.code_operators_pointer
 
 settings():
     user.code_private_function_formatter = "SNAKE_CASE"
@@ -43,8 +43,6 @@ state (struct | structure) <user.text>:
 state enum <user.text>:
     insert("enum ")
     insert(user.formatted_text(text, "PUBLIC_CAMEL_CASE"))
-
-toggle use: user.code_toggle_libraries()
 
 ## Simple aliases
 borrow: "&"

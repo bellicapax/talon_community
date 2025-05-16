@@ -10,13 +10,14 @@ tag(): user.code_data_null
 tag(): user.code_functions
 tag(): user.code_functions_common
 tag(): user.code_libraries
-tag(): user.code_libraries_gui
 tag(): user.code_operators_array
 tag(): user.code_operators_assignment
 tag(): user.code_operators_bitwise
 tag(): user.code_operators_math
-tag(): user.code_operators_pointer
+
 # Use this tag if you use the stylua linter
+#tag(): user.stylua
+
 settings():
     user.code_private_function_formatter = "SNAKE_CASE"
     user.code_public_function_formatter = "SNAKE_CASE"
@@ -36,7 +37,7 @@ state append string: " .. "
 
 state label <user.text>:
     insert("::")
-    user.insert_formatted(text, "snake")
+    user.insert_formatted(text, "SNAKE_CASE")
     insert("::")
 
 require <user.code_libraries>:
@@ -60,7 +61,7 @@ self dot: "self."
 
 index <user.word>: '["{word}"]'
 index (var | variable) <user.text>:
-    var = user.formatted_text(text, "snake")
+    var = user.formatted_text(text, "SNAKE_CASE")
     insert("[{var}]")
 
 state return dick: user.insert_between("return {", "}")

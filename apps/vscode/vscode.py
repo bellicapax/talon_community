@@ -3,15 +3,21 @@ from talon import Context, Module, actions, app
 is_mac = app.platform == "mac"
 
 ctx = Context()
+ctx_editor = Context()
 mac_ctx = Context()
 mod = Module()
+# com.todesktop.230313mzl4w4u92 is for Cursor - https://www.cursor.com/
 mod.apps.vscode = """
 os: mac
 and app.bundle: com.microsoft.VSCode
 os: mac
 and app.bundle: com.microsoft.VSCodeInsiders
 os: mac
+and app.bundle: com.vscodium
+os: mac
 and app.bundle: com.visualstudio.code.oss
+os: mac
+and app.bundle: com.todesktop.230313mzl4w4u92
 """
 mod.apps.vscode = """
 os: linux
@@ -24,6 +30,8 @@ os: linux
 and app.name: VSCodium
 os: linux
 and app.name: Codium
+os: linux
+and app.name: Cursor
 """
 mod.apps.vscode = r"""
 os: windows
@@ -43,11 +51,19 @@ and app.exe: /^vscodium\.exe$/i
 os: windows
 and app.name: Azure Data Studio
 os: windows
-and app.exe: azuredatastudio.exe
+and app.exe: /^azuredatastudio\.exe$/i
+os: windows
+and app.exe: positron.exe
+os: windows
+and app.exe: /^cursor\.exe$/i
 """
 
 ctx.matches = r"""
 app: vscode
+"""
+ctx_editor.matches = r"""
+app: vscode
+and win.title: /focus:\[Text Editor\]/
 """
 mac_ctx.matches = r"""
 os: mac
@@ -87,6 +103,32 @@ class CodeActions:
         actions.user.vscode("editor.action.commentLine")
 
 
+# In the editor, use RPC commands to avoid conflicting with the editor's keybindings.
+# Only do this for editor, so that e.g. modal windows can still be pasted into with
+# ctrl-v.
+@ctx_editor.action_class("edit")
+class EditActions:
+    def undo():
+        actions.user.vscode("undo")
+
+    def redo():
+        actions.user.vscode("redo")
+
+    def copy():
+        actions.user.vscode("editor.action.clipboardCopyAction")
+
+    def paste():
+        actions.user.vscode("editor.action.clipboardPasteAction")
+
+    def find(text: str = None):
+        if text:
+            actions.user.run_rpc_command(
+                "editor.actions.findWithArgs", {"searchString": text}
+            )
+        else:
+            actions.user.vscode("actions.find")
+
+
 @ctx.action_class("edit")
 class EditActions:
     # talon edit actions
@@ -99,13 +141,14 @@ class EditActions:
     def save_all():
         actions.user.vscode("workbench.action.files.saveAll")
 
-    def find(text=None):
-        if is_mac:
-            actions.key("cmd-f")
-        else:
-            actions.key("ctrl-f")
-        if text is not None:
-            actions.insert(text)
+    def save():
+        actions.user.vscode("workbench.action.files.save")
+
+    def find_next():
+        actions.user.vscode("editor.action.nextMatchFindAction")
+
+    def find_previous():
+        actions.user.vscode("editor.action.previousMatchFindAction")
 
     def line_swap_up():
         actions.key("alt-up")
@@ -162,6 +205,14 @@ class Actions:
         actions.key("ctrl-shift-p")
 
 
+@mac_ctx.action_class("edit")
+class MacEditActions:
+    def find(text: str = None):
+        actions.key("cmd-f")
+        if text:
+            actions.insert(text)
+
+
 @mac_ctx.action_class("user")
 class MacUserActions:
     def command_palette():
@@ -181,7 +232,7 @@ class UserActions:
         actions.user.vscode("workbench.action.toggleEditorGroupLayout")
 
     def split_maximize():
-        actions.user.vscode("workbench.action.maximizeEditor")
+        actions.user.vscode("workbench.action.toggleMaximizeEditorGroup")
 
     def split_reset():
         actions.user.vscode("workbench.action.evenEditorWidths")
@@ -190,7 +241,7 @@ class UserActions:
         actions.user.vscode("workbench.action.focusLeftGroup")
 
     def split_next():
-        actions.user.vscode_and_wait("workbench.action.focusRightGroup")
+        actions.user.vscode("workbench.action.focusRightGroup")
 
     def split_window_down():
         actions.user.vscode("workbench.action.moveEditorToBelowGroup")
@@ -212,6 +263,23 @@ class UserActions:
 
     def split_window():
         actions.user.vscode("workbench.action.splitEditor")
+
+    def split_number(index: int):
+        supported_ordinals = [
+            "First",
+            "Second",
+            "Third",
+            "Fourth",
+            "Fifth",
+            "Sixth",
+            "Seventh",
+            "Eighth",
+        ]
+
+        if 0 <= index - 1 < len(supported_ordinals):
+            actions.user.vscode(
+                f"workbench.action.focus{supported_ordinals[index - 1]}EditorGroup"
+            )
 
     # splits.py support end
 
@@ -244,6 +312,14 @@ class UserActions:
     def multi_cursor_skip_occurrence():
         actions.user.vscode("editor.action.moveSelectionToNextFindMatch")
 
+    # multiple_cursor.py support end
+
+    def command_search(command: str = ""):
+        actions.user.vscode("workbench.action.showCommands")
+        if command != "":
+            actions.insert(command)
+
+    # tabs.py support begin
     def tab_jump(number: int):
         if number < 10:
             if is_mac:
@@ -263,34 +339,14 @@ class UserActions:
         else:
             actions.key("alt-0")
 
-    # splits.py support begin
-    def split_number(index: int):
-        """Navigates to a the specified split"""
-        if index < 9:
-            if is_mac:
-                actions.key(f"cmd-{index}")
-            else:
-                actions.key(f"ctrl-{index}")
+    def tab_duplicate():
+        # Duplicates the current tab into a new tab group
+        # vscode does not allow duplicate tabs in the same tab group, and so is implemented through splits
+        actions.user.split_window_vertically()
 
-    # splits.py support end
+    # tabs.py support end
 
     # find_and_replace.py support begin
-
-    def find(text: str):
-        """Triggers find in current editor"""
-        if is_mac:
-            actions.key("cmd-f")
-        else:
-            actions.key("ctrl-f")
-
-        if text:
-            actions.insert(text)
-
-    def find_next():
-        actions.user.vscode("editor.action.nextMatchFindAction")
-
-    def find_previous():
-        actions.user.vscode("editor.action.previousMatchFindAction")
 
     def find_everywhere(text: str):
         """Triggers find across project"""
