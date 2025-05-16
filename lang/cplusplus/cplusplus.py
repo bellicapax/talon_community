@@ -5,7 +5,7 @@ mod = Module()
 
 ctx = Context()
 ctx.matches = r"""
-code.language: cplusplus
+code.language: cpp
 """
 
 ctx.lists["self.cpp_pointers"] = {

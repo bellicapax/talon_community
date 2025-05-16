@@ -1,4 +1,4 @@
-code.language: cplusplus
+code.language: cpp
 -
 tag(): user.code_imperative
 
