@@ -1,0 +1,79 @@
+language: cpp | c
+---
+
+name: objectPointer
+description: Unreal TObjectPtr
+phrase: tea object pointer
+insertionScope: class | namedFunction
+
+$varType.wrapperPhrase: tea object pointer
+$varType.wrapperScope: token
+-
+TObjectPtr<$varType>
+---
+
+name: weakObjectPointer
+description: Unreal TWeakObjectPtr
+phrase: weak object pointer
+insertionScope: class | namedFunction
+
+$varType.wrapperPhrase: weak object pointer
+$varType.wrapperScope: token
+-
+TWeakObjectPtr<$varType>
+---
+
+name: softObjectPointer
+description: Unreal TSoftObjectPtr
+phrase: soft object pointer
+insertionScope: class | namedFunction
+
+$varType.wrapperPhrase: soft object pointer
+$varType.wrapperScope: token
+-
+TSoftObjectPtr<$varType>
+---
+
+name: softClassPointer
+description: Unreal TSoftClassPtr
+phrase: soft class pointer
+insertionScope: class | namedFunction
+
+$varType.wrapperPhrase: soft class pointer
+$varType.wrapperScope: token
+-
+TSoftClassPtr<$varType>
+---
+
+name: pimplPointer
+description: Unreal TPimplPtr
+phrase: pimple pointer
+insertionScope: class | namedFunction
+
+$varType.wrapperPhrase: pimple pointer
+$varType.wrapperScope: token
+-
+TPimplPtr<$varType>
+---
+
+name: uniquePointer
+description: Unreal TUniquePtr
+phrase: unique pointer
+insertionScope: class | namedFunction
+
+$varType.wrapperPhrase: unique pointer
+$varType.wrapperScope: token
+-
+TUniquePtr<$varType>
+---
+
+name: sharedPointer
+description: Unreal TSharedPtr
+phrase: shared pointer
+insertionScope: class | namedFunction
+
+$varType.wrapperPhrase: shared pointer
+$varType.wrapperScope: token
+-
+TSharedPtr<$varType>
+---
