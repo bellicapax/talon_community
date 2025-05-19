@@ -37,4 +37,3 @@ settings():
 
 ^(reddy | ready) spaghetti+$: 
     speech.enable()
-    user.omega_mouse_restart()
