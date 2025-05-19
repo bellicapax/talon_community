@@ -11,7 +11,7 @@ page down: pagedown
 page up: pageup
 escape: escape
 zoo: space
-tab: tab
+next: tab
 insert: insert
 wipe: backspace
 delete: backspace
