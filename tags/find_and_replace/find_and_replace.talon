@@ -2,27 +2,6 @@ tag: user.find_and_replace
 -
 tag(): user.find
 
-# ERIS_BEGIN Extra hunt stuff
-hunt now:
-    user.find("")
-    user.find_next()
-hunt now (pace | paste):
-    user.find("")
-    sleep(25ms)
-    edit.paste()
-    user.find_next()
-hunt now <user.text>:
-    user.find(text)
-    user.find_next()
-hunt this: user.find("")
-hunt this (pace | paste):
-    user.find("")
-    sleep(25ms)
-    edit.paste()
-hunt this <user.text>: user.find(text)
-hunt next: user.find_next()
-hunt previous: user.find_previous()
-# ERIS_END
 hunt all: user.find_everywhere("")
 hunt all (pace | paste):
     user.find_everywhere("")
