@@ -2,15 +2,23 @@ name: ifStatement
 phrase: if
 insertionScope: statement
 
-$1.wrapperPhrase: if cond
+$1.wrapperPhrase: condition
 $1.wrapperScope: statement
 $0.wrapperPhrase: if
 $0.wrapperScope: statement
 ---
 
-language: c | cpp | csharp | java | javascript | typescript | javascriptreact | typescriptreact
+language: csharp | java | javascript | typescript | javascriptreact | typescriptreact
 -
 if ($1) {
+    $0
+}
+---
+
+language: c | cpp
+-
+if ($1) 
+{
     $0
 }
 ---
