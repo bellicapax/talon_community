@@ -11,7 +11,7 @@ list: user.delimiter_pair
 
 round: ( )
 box: [ ]
-diamond: < >
+rupee: < >
 curly: { }
 twin: "' '"
 quad: '" "'
