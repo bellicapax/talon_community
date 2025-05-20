@@ -181,3 +181,7 @@ scope: "::"
     insert("->")
     user.insert_formatted(prose, "PUBLIC_CAMEL_CASE")
 ^todo$: "// TODO: "
+
+^args$: 
+    "()"
+    edit.left()
