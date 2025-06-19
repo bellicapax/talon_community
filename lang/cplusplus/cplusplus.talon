@@ -150,6 +150,7 @@ scope: "::"
     insert("{")
     edit.line_insert_down()
     edit.line_insert_down()
+    sleep(100ms)
     insert("}")
     edit.up()
     key("tab")
@@ -181,7 +182,4 @@ scope: "::"
     insert("->")
     user.insert_formatted(prose, "PUBLIC_CAMEL_CASE")
 ^todo$: "// TODO: "
-
-^args$: 
-    "()"
-    edit.left()
+at I: "[i]" 
