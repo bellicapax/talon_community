@@ -1,0 +1,14 @@
+name: pragmaRegion
+description: Pragma Region Wrap
+phrase: region
+
+$ourCode.wrapperPhrase: region
+$ourCode.wrapperScope: line
+---
+
+language: cpp | c
+-
+#pragma region $name
+$ourCode
+#pragma endregion // $name
+---

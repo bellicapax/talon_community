@@ -1,0 +1,14 @@
+name: operatorBox
+description: CPP box operator override
+phrase: operator box
+insertionScope: class
+
+$varType.wrapperPhrase: operator box
+$varType.wrapperScope: token
+---
+
+language: cpp | c
+-
+$varType& operator[](int32 Index);
+const $varType& operator[](int32 Index) const;
+---

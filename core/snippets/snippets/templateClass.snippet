@@ -1,0 +1,16 @@
+name: template class
+description: C++ template class
+phrase: template
+insertionScope: line
+---
+
+language: cpp | c
+
+$name.insertionFormatter: PUBLIC_CAMEL_CASE
+-
+template <typename $typename>
+class T$name
+{
+    $body
+};
+---

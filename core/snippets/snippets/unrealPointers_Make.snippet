@@ -1,0 +1,26 @@
+language: cpp | c
+---
+
+name: makePimplPointer
+description: Make Unreal TPimplPtr
+phrase: make pimple
+insertionScope: class | namedFunction
+-
+MakePimpl<$1>($0);
+---
+
+name: makeUniquePointer
+description: Make Unreal TUniquePtr
+phrase: make unique
+insertionScope: class | namedFunction
+-
+MakeUnique<$1>($0);
+---
+
+name: makeSharedPointer
+description: Make Unreal TSharedPtr
+phrase: make shared
+insertionScope: class | namedFunction
+-
+MakeShared<$1>($0);
+---
