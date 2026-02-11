@@ -1,0 +1,13 @@
+name: initCast
+description: Unreal declare and initialize to Cast
+phrase: init cast
+insertionScope: namedFunction
+
+$var.wrapperPhrase: cast
+$var.wrapperScope: token
+---
+
+language: cpp | c
+-
+$varType* $varName = Cast<$varType>($var)
+---

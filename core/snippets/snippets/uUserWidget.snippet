@@ -1,0 +1,25 @@
+name: uUserWidget
+description: Unreal User Widget
+phrase: user widget
+insertionScope: line | statement
+---
+
+language: cpp | c
+
+$name.insertionFormatter: PUBLIC_CAMEL_CASE
+-
+#pragma once
+
+#include <Blueprint/UserWidget.h>
+
+#include "$name.generated.h"
+
+UCLASS()
+class U$name : public UUserWidget
+{
+    GENERATED_BODY()
+
+public:
+};
+
+---
