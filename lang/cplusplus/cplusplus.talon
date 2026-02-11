@@ -165,7 +165,7 @@ scope: "::"
     edit.delete_line()
     insert("private:")
 
-(val oak) <user.prose>$:
+(val voke) <user.prose>$:
     insert(".")
     user.insert_formatted(prose, "PUBLIC_CAMEL_CASE")
     insert("()")
@@ -173,7 +173,7 @@ scope: "::"
 (val prop) <user.prose>$:
     insert(".")
     user.insert_formatted(prose, "PUBLIC_CAMEL_CASE")
-(point oak) <user.prose>$:
+(point voke) <user.prose>$:
     insert("->")
     user.insert_formatted(prose, "PUBLIC_CAMEL_CASE")
     insert("()")
