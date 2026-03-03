@@ -155,16 +155,20 @@ scope: "::"
     edit.up()
     key("tab")
 
-^public$: 
+^public$:
     edit.delete_line()
     insert("public:")
-^protected$: 
+^protected$:
     edit.delete_line()
     insert("protected:")
-^private$: 
+^private$:
     edit.delete_line()
     insert("private:")
 
+voke <user.prose>$:
+    user.insert_formatted(prose, "PUBLIC_CAMEL_CASE")
+    insert("()")
+    edit.left()
 (val voke) <user.prose>$:
     insert(".")
     user.insert_formatted(prose, "PUBLIC_CAMEL_CASE")
@@ -182,4 +186,4 @@ scope: "::"
     insert("->")
     user.insert_formatted(prose, "PUBLIC_CAMEL_CASE")
 ^todo$: "// TODO: "
-at I: "[i]" 
+at I: "[i]"
