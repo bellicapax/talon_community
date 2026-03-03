@@ -1,5 +1,10 @@
-# Compound of action(select, clear, copy, cut, paste, etc.) and modifier(word, line, etc.) commands for editing text.
+# Compound of action(select, clear, copy, cut, paste, etc.) and modifier(word,
+# line, etc.) commands for editing text.
 # eg: "select line", "clear all"
+# For overriding or creating aliases for specific actions, this function will
+# also accept strings, e.g. `user.edit_command("delete", "wordLeft")`.
+# See edit_command_modifiers.py to discover the correct string for the modify argument,
+# and `edit_command_actions.py` `simple_action_callbacks` to find strings for the action argument.
 <user.edit_action> <user.edit_modifier>: user.edit_command(edit_action, edit_modifier)
 
 # Zoom
@@ -23,7 +28,6 @@ go <user.navigation_step>+: user.perform_navigation_steps(navigation_step_list)
 
 go line start | head: edit.line_start()
 go line end | tail: edit.line_end()
-[go] line mid: user.line_middle()
 
 go way left:
     edit.line_start()
@@ -49,8 +53,7 @@ copy that: edit.copy()
 cut that: edit.cut()
 
 # Paste
-clipboard: key("super-v")
-(pace | paste) that: edit.paste()
+(pace | paste) (that | it): edit.paste()
 (pace | paste) enter:
     edit.paste()
     key(enter)
@@ -73,10 +76,10 @@ padding: user.insert_between(" ", " ")
 
 # Undo/redo
 undo that: edit.undo()
-nope: edit.undo()
 redo that: edit.redo()
-yep yep: edit.redo()
 
 # Save
-disk: edit.save()
-disk all: edit.save_all()
+file save: edit.save()
+file save all: edit.save_all()
+
+[go] line mid: user.line_middle()
