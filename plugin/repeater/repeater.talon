@@ -1,5 +1,7 @@
 # -1 because we are repeating, so the initial command counts as one
-<user.ordinals>: core.repeat_command(ordinals - 1)
+# ERIS_BEGIN - comment out this as it can accidentally fire too often
+# <user.ordinals>: core.repeat_command(ordinals - 1)
+# ERIS_END
 <number_small> times: core.repeat_command(number_small - 1)
 (repeat that | twice): core.repeat_command(1)
 repeat that <number_small> [times]: core.repeat_command(number_small)
