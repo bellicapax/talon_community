@@ -28,3 +28,6 @@ not tag: user.deep_sleep
     user.mouse_wake()
     user.history_enable()
     user.talon_mode()
+
+^(reddy | ready) spaghetti+$:
+    speech.enable()
