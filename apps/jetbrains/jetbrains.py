@@ -154,6 +154,10 @@ mod.apps.jetbrains = """
 os: mac
 and app.bundle: com.jetbrains.jbr.java
 """
+mod.apps.jetbrains = """
+os: windows
+and app.app: openjdk platform binary
+"""
 
 
 @mod.action_class
