@@ -44,7 +44,7 @@ go page down: edit.page_down()
 
 # Indentation
 indent [more]: edit.indent_more()
-(indent less | out dent): edit.indent_less()
+(indent less | dedent): edit.indent_less()
 
 # Copy
 copy that: edit.copy()
@@ -57,7 +57,7 @@ cut that: edit.cut()
 (pace | paste) enter:
     edit.paste()
     key(enter)
-paste match: edit.paste_match_style()
+(pace | paste) match: edit.paste_match_style()
 
 # Duplication
 clone that: edit.selection_clone()
