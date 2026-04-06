@@ -42,7 +42,7 @@ class Actions:
     def gamepad_scroll(x: float, y: float):
         """Perform gamepad scrolling"""
         global cron_job, _x, _y, scroll_active_time
-        multiplier = 0.5 if slow_scroll else 3
+        multiplier = 0.5 if slow_scroll else 1.25
         _x = x**3 * multiplier
         _y = y**3 * multiplier
         # actions.user.hud_add_log('event', 'Scroll {}, {}'.format(x, y))
@@ -119,7 +119,7 @@ class Actions:
         #         x += rect.width / 4
 
         ctrl.mouse_move(x, y)
-    
+
     def gamepad_listen_for_mouse_stop(dx: float, dy: float):
         """Listens for mouse start/stop to turn mouse active/inactive"""
         global mouse_active, mouse_active_time
