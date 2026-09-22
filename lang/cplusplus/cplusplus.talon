@@ -22,9 +22,9 @@ settings():
     user.code_private_function_formatter = "PUBLIC_CAMEL_CASE"
     user.code_protected_function_formatter = "PUBLIC_CAMEL_CASE"
     user.code_public_function_formatter = "PUBLIC_CAMEL_CASE"
-    user.code_private_variable_formatter = "PUBLIC_CAMEL_CASE"
-    user.code_protected_variable_formatter = "PUBLIC_CAMEL_CASE"
-    user.code_public_variable_formatter = "PUBLIC_CAMEL_CASE"
+    user.code_private_variable_formatter = "PRIVATE_CAMEL_CASE"
+    user.code_protected_variable_formatter = "PRIVATE_CAMEL_CASE"
+    user.code_public_variable_formatter = "PRIVATE_CAMEL_CASE"
 
 
 # ^funky <user.text>$: user.code_default_function(text)
@@ -77,11 +77,15 @@ state co return: "co_return "
 #   declare standard string function get text -> "std::string get_text()"
 #   declare void function pointer callback -> "void(* callback)()"
 (var|declare) <user.cpp_raw_type> <user.text>$:
-    var_name = user.formatted_text(text, "PUBLIC_CAMEL_CASE")
+    var_name = user.formatted_text(text, "PRIVATE_CAMEL_CASE")
     insert(user.cpp_build_declarator(cpp_raw_type, var_name))
 
 (var|declare) <user.cpp_raw_type> <user.letter>:
     insert(user.cpp_build_declarator(cpp_raw_type, letter))
+
+(member) <user.cpp_raw_type> <user.text>$:
+    var_name = user.formatted_text(text, "PUBLIC_CAMEL_CASE")
+    insert(user.cpp_build_declarator(cpp_raw_type, var_name))
 
 # Ex. (int *)
 {user.cpp_cast_style}:
