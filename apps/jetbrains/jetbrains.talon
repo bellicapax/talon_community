@@ -85,8 +85,8 @@ play recording <user.text> [over]:
 # Marks
 go mark: user.idea("action ShowBookmarks")
 toggle mark: user.idea("action ToggleBookmark")
-go next mark: user.idea("action GotoNextBookmark")
-go last mark: user.idea("action GotoPreviousBookmark")
+mark next: user.idea("action GotoNextBookmark")
+mark last: user.idea("action GotoPreviousBookmark")
 toggle mark <number>: user.idea("action ToggleBookmark{number}")
 go mark <number>: user.idea("action GotoBookmark{number}")
 # Folding
