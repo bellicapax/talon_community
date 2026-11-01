@@ -10,7 +10,7 @@ enter: enter
 page down: pagedown
 page up: pageup
 escape: escape
-zoo: space
+blank: space
 next: tab
 insert: insert
 wipe: backspace
